@@ -1,28 +1,85 @@
 <script language="JavaScript">
-function prueba(x) {
-	alert(document.getElementById('tabla').tBodies[0].rows[x].cells[0].innerHTML);
+    function prueba(x) {
+        alert(document.getElementById('tabla').tBodies[0].rows[x].cells[0].innerHTML);
         alert(document.getElementById('tabla').tBodies[0].rows[x].cells[1].innerHTML);
 
-}
+    }
 </script>
 </head>
 
 <body>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" id="tabla">
-<thead>
-  <tr>
-      <th onclick="prueba()">ID</th>
-      <th>NOMBRES</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-      <td onclick="prueba(0)">1</td>
-      <td onclick="prueba(0)">Iv&aacute;n</td>
-  </tr>
-  <tr>
-      <td onclick="prueba(1)">2</td>
-      <td onclick="prueba(1)">Ale</td>
-  </tr>
-</tbody>
-</table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="tabla">
+        <thead>
+            <tr>
+                <th onclick="prueba()">ID</th>
+                <th>NOMBRES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td onclick="prueba(0)">1</td>
+                <td onclick="prueba(0)">Iv&aacute;n</td>
+            </tr>
+            <tr>
+                <td onclick="prueba(1)">2</td>
+                <td onclick="prueba(1)">Ale</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!--
+    <?php
+require '../../../connections/localhost.php';
+mysql_select_db($database_localhost, $localhost);
+$sql1 = "
+CREATE TEMPORARY TABLE IF NOT EXISTS t1 (
+  SELECT
+  paqueteria_03cajaPredetOrd.id,
+  paqueteria_03cajaPredetOrd.idOrd,
+  paqueteria_03cajaPredetOrd.peso,
+  paqueteria_03cajaPredetOrd.costo,
+  paqueteria_03cajas.alto,
+  paqueteria_03cajas.ancho,
+  paqueteria_03cajas.fondo,
+  paqueteria_03cajaPredetOrd.consecutivo
+  FROM
+  paqueteria_03cajaPredetOrd
+  INNER JOIN paqueteria_03cajas ON paqueteria_03cajas.id = paqueteria_03cajaPredetOrd.idCaja
+  where paqueteria_03cajaPredetOrd.idOrd='74'
+);
+";
+$result1 = mysql_query($sql1);
+$sql2 = "
+INSERT INTO t1(
+  SELECT
+  paqueteria_03cajaPersonaOrd.id,
+  paqueteria_03cajaPersonaOrd.idOrd,
+  paqueteria_03cajaPersonaOrd.peso,
+  paqueteria_03cajaPersonaOrd.costo,
+  paqueteria_03cajaPersonaOrd.alto,
+  paqueteria_03cajaPersonaOrd.ancho,
+  paqueteria_03cajaPersonaOrd.fondo,
+  paqueteria_03cajaPersonaOrd.consecutivo
+  FROM
+  paqueteria_03cajaPersonaOrd
+  where paqueteria_03cajaPersonaOrd.idOrd='74'
+);
+";
+$result2 = mysql_query($sql2);
+$sql3 = "select * from t1;";
+$result3 = mysql_query($sql3);
+if (mysql_num_rows($result3) == 0) {
+  echo "No hay registros";
+  echo mysql_errno() . ": " . mysql_error() . "\n";
+}
+else {
+  while ($row = mysql_fetch_assoc($result3)) {
+    echo "$row[id]</br>";
+  }
+}
+mysql_free_result($result1);
+mysql_free_result($result2);
+mysql_free_result($result2);
+mysql_close($localhost);
+    -->
