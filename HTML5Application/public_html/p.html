@@ -1,0 +1,28 @@
+<script language="JavaScript">
+function prueba(x) {
+	alert(document.getElementById('tabla').tBodies[0].rows[x].cells[0].innerHTML);
+        alert(document.getElementById('tabla').tBodies[0].rows[x].cells[1].innerHTML);
+
+}
+</script>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="tabla">
+<thead>
+  <tr>
+      <th onclick="prueba()">ID</th>
+      <th>NOMBRES</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+      <td onclick="prueba(0)">1</td>
+      <td onclick="prueba(0)">Iv&aacute;n</td>
+  </tr>
+  <tr>
+      <td onclick="prueba(1)">2</td>
+      <td onclick="prueba(1)">Ale</td>
+  </tr>
+</tbody>
+</table>
