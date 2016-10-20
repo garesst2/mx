@@ -14,3 +14,17 @@ and open the template in the editor.
         <div>TODO write content</div>
     </body>
 </html>
+
+<!--
+include_once('class/tcpdf/tcpdf.php');
+include_once("class/PHPJasperXML.inc.php");
+include_once ('setting.php');
+
+$PHPJasperXML = new PHPJasperXML();
+//$PHPJasperXML->debugsql=true;
+$PHPJasperXML->arrayParameter=array("nombre1"=>"oscar");
+$PHPJasperXML->load_xml_file("report1.jrxml");
+
+$PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
+$PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
+-->
